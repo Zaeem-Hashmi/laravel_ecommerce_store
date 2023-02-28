@@ -18,8 +18,12 @@ use Illuminate\Support\Facades\Auth;
 
 Route::prefix('property')->middleware('auth')->group(function () {
    Route::get('/create',[PropertyController::class,'index']);
+   Route::post('/store',[PropertyController::class,'store'])->name('ppt.add');
+   Route::post('/update',[PropertyController::class,'update'])->name('ppt.update');
+   Route::get('/delete/{id}',[PropertyController::class,'delete'])->name('ppt.delete');
+   Route::get('/edit/{id}',[PropertyController::class,'edit'])->name('ppt.edit');
 });
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
